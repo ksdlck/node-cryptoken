@@ -9,16 +9,16 @@ The example shows how what an authentication service would do to generate a toke
 
 Authentication server:
 
-  priv = (require \fs).readFileSync \./key.pem
-  token = (require \cryptoken).generate priv, {id: \hello, cap: [\email \print]}, {expires: Date.now () + 24 * 60 * 60}
+    priv = (require \fs).readFileSync \./key.pem
+    token = (require \cryptoken).generate priv, {id: \hello, cap: [\email \print]}, {expires: Date.now () + 24 * 60 * 60}
 
 Other service:
 
-  cryptoken = require \cryptoken
+    cryptoken = require \cryptoken
 
-  pub = (require \fs).readFileSync \./cert.pem
-  valid = cryptoken.validate pub, token
-  data = cryptoken.data token
+    pub = (require \fs).readFileSync \./cert.pem
+    valid = cryptoken.validate pub, token
+    data = cryptoken.data token
 
 KEYS
 ----
