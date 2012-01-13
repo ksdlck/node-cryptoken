@@ -1,0 +1,23 @@
+cry = require \crypto
+
+algo = \RSA-SHA256
+
+exports.generate = (priv, data) ->
+    data = JSON.stringify data
+    sign = cry.createSign algo
+    sign.update data
+    sig = sign.sign priv
+    new Buffer JSON.stringify {d: data, s: sig} .toString \base64
+
+exports.validate = (pub, token) ->
+    ver = cry.createVerify algo
+    try
+      token = JSON.parse (new Buffer token, \base64 .toString \ascii)
+    ver.update token.d
+    valid = ver.verify pub, token.s
+
+exports.data = (token) ->
+  try
+    JSON.parse (JSON.parse (new Buffer token, \base64 .toString \ascii) .d)
+  catch
+    null
