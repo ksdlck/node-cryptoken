@@ -1,4 +1,0 @@
-{spawn} = require \child_process
-
-task \build ! ->
-  spawn \coco [\-c \-o \. \src]

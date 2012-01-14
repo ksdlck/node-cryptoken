@@ -9,16 +9,16 @@ The example shows how what an authentication service would do to generate a toke
 
 Authentication server:
 
-    priv = (require \fs).readFileSync \./key.pem
-    token = (require \cryptoken).generate priv, {id: \hello, cap: [\email \print]}, {expires: Date.now () + 24 * 60 * 60}
+  priv = (require \fs).readFileSync \./key.pem
+  token = (require \cryptoken).generate priv, {id: \hello, cap: [\email \print]}, {expires: Date.now () + 24 * 60 * 60}
 
 Other service:
 
-    cryptoken = require \cryptoken
+  cryptoken = require \cryptoken
 
-    pub = (require \fs).readFileSync \./cert.pem
-    valid = cryptoken.validate pub, token
-    data = cryptoken.data token
+  pub = (require \fs).readFileSync \./cert.pem
+  valid = cryptoken.validate pub, token
+  data = cryptoken.data token
 
 KEYS
 ----
@@ -35,7 +35,7 @@ For authentication purposes, this is typically not necessary (and, frankly, typi
 LICENSE
 -------
 
-Copyright (c) 2012 Karel Sedláček
+Copyright (c) 2012 Karel Sedláček <k@ksdlck.com> (http://ksdlck.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
